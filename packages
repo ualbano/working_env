@@ -1,0 +1,12 @@
+jq
+curl
+ShellCheck
+shfmt
+make 
+gcc 
+ripgrep 
+unzip 
+git 
+xclip 
+neovim=0.11
+
