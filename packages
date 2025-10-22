@@ -10,3 +10,5 @@ git
 xclip 
 neovim=0.11
 lazygit
+bash-language-server
+pyright
