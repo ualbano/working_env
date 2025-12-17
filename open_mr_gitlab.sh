@@ -2,18 +2,15 @@
 
 set -euo pipefail
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 1 ]; then
   echo "Exactly one argument needed: The name of the branch that should be used to open a PR."
   exit 1
 fi
 
-branch="$1"
-target="$2"
+target="$1"
+branch=${2:-$(git branch --show-current)}
 range="$target..$branch"
-
-profile=DeveloperDevAccess
 repo=$(basename $(git rev-parse --show-toplevel))
-region=eu-central-1
 
 num_commits=$(git rev-list --count "$range")
 tfile="$(mktemp)"
@@ -53,4 +50,4 @@ fi
 set -x
 
 git push origin "$branch"
-glab mr create -s "$branch" -b "$target" -t "$summary" -d "$message"
+glab mr create -s "$branch" -b "$target" -t "$summary" -d "$message" --squash-before-merge
