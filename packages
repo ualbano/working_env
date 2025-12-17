@@ -9,6 +9,7 @@ unzip
 git 
 xclip 
 neovim=0.11
+glab
 lazygit
 bash-language-server
 pyright
